@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/include",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/arch/arm64/include",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/arch/arm64/include/generated",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/include/generated",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/arch/arm64/include/uapi",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/include/uapi",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/arch/arm64/include/generated/uapi",
+                "/home/heisenberg/linux/rk3568-linux-6.1/kernel/include/generated/uapi",
+                "/home/heisenberg/linux/rk3568-linux-6.1/prebuilts/gcc/linux-x86/aarch64/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc/usr/include"
+            ],
+            "defines": [
+                "__KERNEL__",
+                "MODULE"
+            ],
+            "compilerPath": "/home/heisenberg/linux/rk3568-linux-6.1/prebuilts/gcc/linux-x86/aarch64/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm64"
+        }
+    ],
+    "version": 4
+}
