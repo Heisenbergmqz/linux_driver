@@ -16,7 +16,7 @@ int main(void)
         perror("open");
         return -1;
     }
-
+    printf("read before\n");
     ret = read(fd, read_buf, sizeof(read_buf) - 1);
     if (ret < 0) {
         perror("read");
