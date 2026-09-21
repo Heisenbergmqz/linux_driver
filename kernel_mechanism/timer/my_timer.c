@@ -2,10 +2,10 @@
 #include <linux/init.h>
 #include <linux/timer.h>
 
-static void my_timer_callback(void);
+static void my_timer_callback(struct timer_list *time_list);
 DEFINE_TIMER(my_timer, my_timer_callback);
 
-static void my_timer_callback(void)
+static void my_timer_callback(struct timer_list *time_list)
 {   
     printk("my_timer_callback\n");
     mod_timer(&my_timer, jiffies_64 + msecs_to_jiffies(5000));
