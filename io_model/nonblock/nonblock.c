@@ -30,7 +30,6 @@ struct char_demo_dev {
     /* 设备自己的数据 */
     char buf[BUF_SIZE];
     size_t data_len;
-    int flag;
 };
 
 
@@ -102,15 +101,15 @@ static ssize_t char_demo_read(struct file *filp,
                               loff_t *f_pos)
 {
     struct char_demo_dev *dev = filp->private_data;
+
     if(filp->f_flags & O_NONBLOCK)
     {
-        if(dev->flag == 0)
+        if(dev->data_len == 0)
         {
             return -EAGAIN;
         }
-        
     }
-    wait_event_interruptible(read_queue, dev->flag == 1);
+    wait_event_interruptible(read_queue, dev->data_len > 0);
 
     if(count > dev->data_len)
     {
@@ -157,7 +156,6 @@ static ssize_t char_demo_write(struct file *filp,
         return -EFAULT;
     }
     dev->data_len += count;
-    dev->flag = 1;
     wake_up_interruptible(&read_queue);
 
     return count;
@@ -190,8 +188,6 @@ static int char_demo_device_register(struct char_demo_dev *dev,
 
     /* 初始化设备自己的状态 */
     dev->data_len = 0;
-
-    dev->flag = 0;
 
     cdev_init(&dev->cdev, &char_demo_fops);
 
